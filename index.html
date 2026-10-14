@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gau Gau Birthday Party 🎂</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: "Trebuchet MS", sans-serif;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(135deg,
+    #ff9aaf, #b6a7ff, #80d9ee, #ffe29a);
+  background-size: 300% 300%;
+  animation: sky 12s ease infinite;
+}
+
+@keyframes sky {
+  0%,100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.party {
+  position: relative;
+  width: min(92%, 650px);
+  margin: 55px auto;
+  padding: 30px 20px;
+  border: 3px solid #fff;
+  border-radius: 32px;
+  background: #ffffff38;
+  box-shadow: 0 12px 45px #664b9b30;
+  backdrop-filter: blur(8px);
+}
+
+h1 {
+  color: #fff;
+  font-size: clamp(30px, 7vw, 48px);
+  text-shadow: 3px 4px #ff8aab;
+}
+
+.subtitle {
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: #fff8d8;
+}
+
+.cake {
+  font-size: 90px;
+  animation: bounce 1.6s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+.message {
+  color: #fff;
+  font-size: 19px;
+  line-height: 1.8;
+  font-weight: bold;
+  text-shadow: 1px 2px #a56a9b;
+}
+
+button {
+  border: 0;
+  border-radius: 30px;
+  padding: 15px 23px;
+  margin: 12px 5px;
+  background: #fff4c7;
+  color: #9b4f86;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #e8b4ce;
+}
+
+button:active { transform: translateY(3px); }
+
+#letter {
+  display: none;
+  padding: 15px;
+  color: #754d86;
+  background: #fff9ed;
+  border-radius: 22px;
+  line-height: 1.9;
+  animation: appear 1s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: scale(.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.balloon {
+  position: fixed;
+  top: 0;
+  z-index: -1;
+  font-size: 55px;
+  animation: float 5s ease-in-out infinite;
+}
+
+.b1 { left: 3%; animation-delay: -1s; }
+.b2 { right: 4%; animation-delay: -3s; }
+.b3 { left: 22%; animation-delay: -2s; }
+.b4 { right: 22%; animation-delay: -4s; }
+
+@keyframes float {
+  0%,100% { transform: translateY(10px) rotate(-8deg); }
+  50% { transform: translateY(80px) rotate(8deg); }
+}
+
+.gau {
+  position: fixed;
+  z-index: 0;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 900;
+  text-shadow: 2px 3px #e58ab2;
+  pointer-events: none;
+  animation: drift 7s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  from { transform: translate(0, 20px) rotate(-12deg); }
+  to { transform: translate(25px, -35px) rotate(12deg); }
+}
+
+.confetti {
+  position: fixed;
+  top: -20px;
+  pointer-events: none;
+  animation: fall linear forwards;
+  z-index: 5;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(720deg); }
+}
+
+.sparkle {
+  position: fixed;
+  color: #fff7b0;
+  animation: twinkle 1.5s infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes twinkle {
+  from { opacity: .25; transform: scale(.7); }
+  to { opacity: 1; transform: scale(1.3); }
+}
+
+footer {
+  font-size: 13px;
+  margin-top: 25px;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="balloon b1">🎈</div>
+<div class="balloon b2">🎈</div>
+<div class="balloon b3">🎈</div>
+<div class="balloon b4">🎈</div>
+
+<div id="gauArea"></div>
+<div id="sparkleArea"></div>
+
+<main class="party">
+  <div class="subtitle">🐾 WELCOME TO THE PARTY 🐾</div>
+
+  <div class="cake">🎂</div>
+
+  <h1> Chúc mừng sinh nhật Ba Yên!</h1>
+
+  <p class="message">
+    Gau gau gau gau 🐶<br>
+    Hôm nay là ngày ý nghĩa của Ba!
+  </p>
+
+  <button onclick="openLetter()">
+    💌 Ba bấm mở thư nè!
+  </button>
+
+  <button onclick="partyTime()">
+    🎉 BÙNG NỔ TIỆC SINH NHẬT!
+  </button>
+
+  <section id="letter">
+    <h2>💗 Gửi Ba gau yêu quý 💗</h2>
+
+    <p>
+      Chúc Ba luôn khỏe mạnh, vui vẻ,
+      ngày nào cũng thật nhiều niềm vui!
+    </p>
+
+    <p>
+      Chúc Ba ngày càng nhiều tiền
+      để cho chó con 🐶💰
+    </p>
+
+    <p>
+      Cảm ơn Ba vì tất cả những điều     
+      ba đã làm cho gia đình.
+      Chó con chúc Ba gau tuổi mới thật
+      hạnh phúc, bình an và may mắn!
+    </p>
+
+    <h2>Gau gau gau! 🐾❤️</h2>
+    <p>Thương Ba nhiều nhiều!</p>
+  </section>
+
+  <footer>
+    Made with love by chó con 🐶
+  </footer>
+</main>
+
+<script>
+const gauArea = document.getElementById("gauArea");
+const sparkleArea = document.getElementById("sparkleArea");
+
+// Tạo những chữ gau bay lung tung
+for (let i = 0; i < 24; i++) {
+  const gau = document.createElement("div");
+  gau.className = "gau";
+  gau.textContent = ["gau", "gau gau", "🐾", "gâu gâu"][i % 4];
+  gau.style.left = Math.random() * 90 + "%";
+  gau.style.top = Math.random() * 90 + "%";
+  gau.style.animationDelay = Math.random() * -7 + "s";
+  gau.style.fontSize = (16 + Math.random() * 16) + "px";
+  gauArea.appendChild(gau);
+}
+
+// Tạo sao lấp lánh
+for (let i = 0; i < 18; i++) {
+  const star = document.createElement("div");
+  star.className = "sparkle";
+  star.textContent = "✦";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.animationDelay = Math.random() * 2 + "s";
+  sparkleArea.appendChild(star);
+}
+
+function openLetter() {
+  document.getElementById("letter").style.display = "block";
+  partyTime();
+}
+
+function partyTime() {
+  const symbols = ["🎉", "💖", "🐾", "✨", "🎊", "💛"];
+
+  for (let i = 0; i < 65; i++) {
+    const item = document.createElement("div");
+    item.className = "confetti";
+    item.textContent =
+      symbols[Math.floor(Math.random() * symbols.length)];
+
+    item.style.left = Math.random() * 100 + "%";
+    item.style.animationDuration = (2 + Math.random() * 4) + "s";
+    item.style.fontSize = (15 + Math.random() * 20) + "px";
+
+    document.body.appendChild(item);
+    item.addEventListener("animationend", () => item.remove());
+  }
+}
+</script>
+
+</body>
+</html>
